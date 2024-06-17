@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&display=swap');
 
-
-/*Globales*/
+/*Global Styles*/
 *,
 *::before,
 *::after {
@@ -19,6 +18,11 @@ html {
 
 body {
     overflow-x: hidden;
+    background-color: rgb(154, 200, 205);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 section {
@@ -64,6 +68,10 @@ header {
 }
 
 .menu-toggle {
+    display: none;
+}
+
+.menu-icon {
     color: #fff;
     font-size: 2.2rem;
     position: absolute;
@@ -76,6 +84,18 @@ header {
 
 .fa-times {
     display: none;
+}
+
+#menu-toggle:checked ~ .nav-list {
+    transform: translateX(0);
+}
+
+#menu-toggle:checked ~ .menu-icon .fa-bars {
+    display: none;
+}
+
+#menu-toggle:checked ~ .menu-icon .fa-times {
+    display: block;
 }
 
 .nav-list {
@@ -92,7 +112,7 @@ header {
     justify-content: space-around;
     z-index: 1250;
     transform: translateX(-100%);
-
+    transition: transform .5s;
 }
 
 .nav::before {
@@ -107,30 +127,15 @@ header {
     opacity: 0;
     transform: scale(0);
     transition: opacity .5s;
-
 }
 
-.open .fa-times {
-    display: block;
-}
-
-.open .fa-bars {
-    display: none;
-}
-
-.open .nav-list {
-    transform: translateX(0);
-}
-
-.open .nav::before {
+#menu-toggle:checked ~ .nav::before {
     opacity: 1;
     transform: scale(1);
 }
 
 .logo {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+    max-width: 10rem;
 }
 
 .nav-item {
@@ -147,12 +152,11 @@ header {
 }
 
 .nav-link:hover {
-    color: brown;
+    color: #1E0342;
 }
 
+
 /*Principal*/
-
-
 .principal {
     width: 100%;
     height: 70vh;
@@ -166,7 +170,7 @@ header {
 .h2-sub {
     font-size: 3rem;
     font-family: 'Poppins', sans-serif;
-    color: burlywood;
+    color: #1E0342;
     font-weight: 600;
     line-height: .4;
 }
@@ -177,7 +181,7 @@ header {
 }
 
 .head {
-    color: crimson;
+    color: #0E46A3;
     font-size: 3.7rem;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -187,13 +191,13 @@ header {
 
 .circle {
     font-size: 1.5rem;
-    color: brown;
+    color: #0E46A3;
     margin: 0 1.6rem;
 }
 
 .he-des h5 {
-    color: burlywood;
-    font-size: 1.4rem;
+    color: #1E0342;
+    font-size: 2.4rem;
     font-weight: 100;
     text-transform: uppercase;
     margin-bottom: 1.2rem;
@@ -219,9 +223,8 @@ header {
 .cta-btn:hover,
 .cta-btn:focus {
     color: #fff;
-    background-color: brown;
+    background-color: #1E0342;
 }
-
 
 .global {
     text-align: center;
@@ -233,7 +236,7 @@ header {
 }
 
 .global .circle {
-    color: brown;
+    color: #1E0342;
     margin: 2.4rem 0;
 }
 
@@ -258,15 +261,14 @@ header {
 
 .res-des p {
     line-height: 1.6;
-    margin-bottom: 2.4rem
+    margin-bottom: 2.4rem;
 }
-
 
 /*footer*/
 footer {
     padding: 7.9rem 0;
     background-color: #121212;
-    color: burlywood;
+    color: #9AC8CD;
     text-align: center;
     position: relative;
 }
@@ -293,6 +295,7 @@ footer {
 
 .footer-content-about p {
     line-height: 2;
+    color: white;
 }
 
 .social-icons {
@@ -304,14 +307,13 @@ footer {
 
 .social-icons i {
     font-size: 2rem;
-    color: #ffc845;
+    color: #E1F7F5;
     padding: .8rem 2rem;
-
 }
 
 .social-icons i:hover,
 .social-icons i:focus {
-    color: brown;
+    color: #1E0342;
 }
 
 .news-form {
@@ -319,7 +321,6 @@ footer {
     position: relative;
     display: flex;
     justify-content: center;
-
 }
 
 .news-input {
@@ -444,11 +445,10 @@ footer {
     .news-btn {
         margin-left: 7.5rem;
     }
-
 }
 
 /*mision*/
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -456,11 +456,11 @@ footer {
     list-style: none;
 }
 
-body{
+body.mission {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -472,89 +472,153 @@ body{
     gap: 2.4rem;
 }
 
-.service-1, .service-2 {
+.service-1 {
     text-align: center;
     padding: 1.6rem;
-    background-color: #f5f5f5;
+    background-color: #0E46A3;
     border-radius: .8rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
-.service-1 h3, .service-2 h2 {
-    margin: 1.6rem 0;
+/*Quiz Styles*/
+.quiz-container {
+    background-color: rgb(30, 3, 66);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.more-1, .more-2 {
-    display: inline-block;
-    color: #fff;
-    font-size: 1.6rem;
-    padding: 1rem 2.4rem;
-    background-color: #f38181;
-    border-radius: .8rem;
-    transition: background-color .5s;
+.question-container {
+    margin-bottom: 20px;
 }
 
-.more-1:hover, .more-2:hover {
-    background-color: #fce38a;
-}
-
-/* Map Section */
-.map {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.4rem;
-}
-
-.map-1, .map-2 {
-    flex: 1;
-    min-width: 300px;
-}
-
-.map-1 {
+.answers {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 10px;
 }
 
-.map img {
-    border-radius: .8rem;
+.answer {
+    background-color: rgb(14, 70, 163);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.btn-1 {
-    display: inline-block;
-    color: #fff;
-    font-size: 1.8rem;
-    padding: 1.6rem 3.6rem;
-    border: .2rem solid #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    border-radius: 5rem;
-    transition: background-color .5s, color .5s;
+.answer:hover {
+    background-color: rgb(30, 3, 66);
 }
 
-.btn-1:hover {
-    background-color: #f38181;
-    border-color: #f38181;
-    color: #252525;
+.hidden {
+    display: none;
 }
 
-/* Info Section */
-.info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.4rem;
+.score-container {
+    margin-top: 20px;
 }
 
-.info-1 {
+#start-over, #next-level, #view-results, #restart-quiz {
+    background-color: rgb(14, 70, 163);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+#start-over:hover, #next-level:hover, #view-results:hover, #restart-quiz:hover {
+    background-color: rgb(30, 3, 66);
+}
+
+#feedback-message.correct {
+    color: #66ff66;
+    font-size: 1.5em;
+}
+
+#feedback-message.incorrect {
+    color: red;
+    font-size: 1.5em;
+}
+
+#results {
+    background-color: rgb(30, 3, 66);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#results-message {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+
+/*Contact Form*/
+.contact-container {
+    background-color: #fff;
+    color: #000;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h1 {
+    margin-bottom: 2rem;
+    color: #007BFF;
+}
+
+.contact-form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
-.info img {
-    width: 5rem;
-    margin-right: 1.6rem;
+.contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #0E46A3;
 }
 
-.info-txt h3 {
-    margin-bottom: .8rem;
+.contact-form input,
+.contact-form textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.6rem;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+    border-color: #007BFF;
+}
+
+.btn-submit {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
 }
